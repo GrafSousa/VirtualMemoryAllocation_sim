@@ -18,7 +18,7 @@ void show(ComponenteDeMemoria mem){
 	aux = mem.first->next;
 	printf("====================== Segment Information ======================\n");
 	while(aux != NULL){//Como testar se a célula está ocupada?
-		if(aux == NULL){//Verifica se a estrutura Process foi inicializada
+		if(aux->proc.segment == L){//Verifica se a estrutura Process foi inicializada
 			printf("Free\n");
 		}
 		else{

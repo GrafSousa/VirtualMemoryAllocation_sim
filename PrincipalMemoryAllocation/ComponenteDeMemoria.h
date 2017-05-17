@@ -1,9 +1,11 @@
+#define L 0
+#define P 1
+
 typedef struct Process{
 	int pid;
 	int begin;
 	int length;
-	int memoria; //Qual a função dessa variável?
-	int segment;
+	int segment; //Recebe L ou P 
 } Process;
 
 typedef struct MemCell *CellPointer;
@@ -24,3 +26,6 @@ int deallocate_mem(int pid);
 int full_free(ComponenteDeMemoria mem);
 int fragment_count();
 void show();
+
+// ===================== Allocation Methods ===================== //
+int allocate_mem_ff(int pid, int num_units);
