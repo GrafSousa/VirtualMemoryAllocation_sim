@@ -1,17 +1,18 @@
 #define L 0
 #define P 1
+#define F -1
 
-typedef struct Process{
-	int pid;
+typedef struct Segment{
+	long int pid;
 	int begin;
 	int length;
-	int segment; //Recebe L ou P 
-} Process;
+	int status; //Recebe L ou P 
+} Segment;
 
 typedef struct MemCell *CellPointer;
 
 typedef struct MemCell {
-  Process proc;
+  Segment seg;
   CellPointer next, prev;
 } MemCell;
 
@@ -21,11 +22,12 @@ typedef struct ComponenteDeMemoria {
 } ComponenteDeMemoria;
 
 // =========================== Methods =========================== //
+void init_segment(Segment * seg, int begin, int length, int status);
 void init(ComponenteDeMemoria * mem); //Equivalente ao Faz lista vazia
-int deallocate_mem(int pid);
-int full_free(ComponenteDeMemoria mem);
-int fragment_count();
-void show();
+int deallocate_mem(int pid, ComponenteDeMemoria * mem);
+int full_free(ComponenteDeMemoria mem);//Verifica se está todo vazia
+int fragment_count(ComponenteDeMemoria mem);
+void show(ComponenteDeMemoria mem);
 
 // ===================== Allocation Methods ===================== //
-int allocate_mem_ff(int pid, int num_units);
+int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem);
