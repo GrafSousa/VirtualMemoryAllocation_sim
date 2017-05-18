@@ -1,6 +1,5 @@
 #define L 0
 #define P 1
-#define F -1
 
 typedef struct Segment{
 	long int pid;
@@ -22,7 +21,7 @@ typedef struct ComponenteDeMemoria {
 } ComponenteDeMemoria;
 
 // =========================== Methods =========================== //
-void init_segment(Segment * seg, int begin, int length, int status);
+void init_segment(Segment * seg, int begin, int length, int status, int pid);
 void init(ComponenteDeMemoria * mem); //Equivalente ao Faz lista vazia
 int deallocate_mem(int pid, ComponenteDeMemoria * mem);
 int full_free(ComponenteDeMemoria mem);//Verifica se está todo vazia
