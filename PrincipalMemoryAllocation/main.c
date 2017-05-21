@@ -19,12 +19,13 @@ int main(){
 	//generate_processes(5, pids);
 	
 	init(&mem);
-	printf("%d\n", full_free(mem));
 	allocate_mem_ff(333, 10, &mem);
-	/*allocate_mem_ff(pids[1], 3, &mem);
-	allocate_mem_ff(pids[2], 5, &mem);
-	allocate_mem_ff(pids[3], 7, &mem);
-	allocate_mem_ff(pids[4], 4, &mem);*/
+	allocate_mem_ff(334, 3, &mem);
+	allocate_mem_ff(335, 5, &mem);
+	allocate_mem_ff(336, 7, &mem);
+	allocate_mem_ff(337, 4, &mem);
 	show(mem);
+	printf("\nINVERSO: \n\n");
+	showI(mem);
 	return 0;
 }

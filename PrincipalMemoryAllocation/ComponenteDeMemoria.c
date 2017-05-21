@@ -20,12 +20,13 @@ void init(ComponenteDeMemoria * mem){
 	
 	mem->first = (CellPointer) malloc(sizeof(MemCell));
 	mem->first->next = (CellPointer) malloc(sizeof(MemCell));
-	
-	mem->first->next->seg = seg;
 	mem->first->prev = NULL;
 
-	mem->last->prev = mem->first->next;
-	mem->last->next = mem->first->prev;
+	mem->first->next->seg = seg;
+	mem->first->next->prev = NULL;
+	mem->first->next->next = NULL;
+	
+	mem->last = mem->first->next;
 }
 
 int full_free(ComponenteDeMemoria mem){
@@ -35,7 +36,6 @@ int full_free(ComponenteDeMemoria mem){
 void show(ComponenteDeMemoria mem){
 	CellPointer aux;
 	aux = mem.first->next;
-	//aux = mem.last;
 	printf("====================== Segment Information ======================\n");
 	while(aux != NULL){
 		if(aux->seg.status){//Verifica se a estrutura Process foi inicializada
@@ -50,7 +50,31 @@ void show(ComponenteDeMemoria mem){
 			printf("length: %d\n", aux->seg.length);
 		}
 		aux = aux->next;
-		//aux = aux->prev;
+		printf("\n");
+	}
+	printf("Memory available: %dkB\n", mem.free);
+}
+
+void showI(ComponenteDeMemoria mem){
+	CellPointer aux;
+	aux = mem.first->next;
+	while(aux->next != NULL){
+		aux = aux->next;
+	}
+	printf("====================== Segment Information ======================\n");
+	while(aux != NULL){
+		if(aux->seg.status){//Verifica se a estrutura Process foi inicializada
+			printf("Process\n");
+			printf("Process ID: %ld\n", aux->seg.pid);
+			printf("Begin: %d\n", aux->seg.begin);
+			printf("length: %d\n", aux->seg.length);
+		}
+		else{
+			printf("Free\n");
+			printf("Begin: %d\n", aux->seg.begin);
+			printf("length: %d\n", aux->seg.length);
+		}
+		aux = aux->prev;
 		printf("\n");
 	}
 	printf("Memory available: %dkB\n", mem.free);
@@ -72,7 +96,8 @@ int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem){
 			else
 				addr = 0;
 			
-			if(num_units*2 == aux->seg.length){
+			if(num_units*2 == aux->seg.length){//Memória alocada é exatamente o tamanho do segmento
+				printf("Tamanho é exatamente igual\n");//Debug
 				//Criando segmento para armazenar o processo
 				Segment s;
 				init_segment(&s, addr, num_units*2, P, pid);
@@ -83,7 +108,8 @@ int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem){
 				addr = addr + num_units*2;
 				return num_cell;
 			}
-			else if(num_units*2 < aux->seg.length){
+			else if(num_units*2 < aux->seg.length){//Memória alocada é menor que o tamanho do segmento
+				printf("Tamanho é menor\n");//Debug
 				//Criando segmento para armazenar o processo
 				Segment s;
 				init_segment(&s, addr, num_units*2, P, pid);
@@ -94,9 +120,9 @@ int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem){
 				//Cria novo segmento livre (resultado da divisão do bloco inicialmente livre)
 				Segment new_seg; 
 				init_segment(&new_seg, addr, (aux->seg.length - num_units*2), L, pid); 
-				new = (CellPointer) malloc(sizeof(MemCell));
-
+				
 				//Atualizando apontadores
+				new = (CellPointer) malloc(sizeof(MemCell));
 				new->next = aux->next;
 				new->prev = aux;
 				if(new->next != NULL)
@@ -113,4 +139,8 @@ int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem){
 		aux = aux->next;
 	}
 	return -1;
+}
+
+int deallocate_mem(int pid, ComponenteDeMemoria * mem){
+	return 0;
 }

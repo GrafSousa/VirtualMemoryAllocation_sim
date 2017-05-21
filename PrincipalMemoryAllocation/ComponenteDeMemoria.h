@@ -27,6 +27,7 @@ int deallocate_mem(int pid, ComponenteDeMemoria * mem);
 int full_free(ComponenteDeMemoria mem);//Verifica se está todo vazia
 int fragment_count(ComponenteDeMemoria mem);
 void show(ComponenteDeMemoria mem);
+void showI(ComponenteDeMemoria mem);
 
 // ===================== Allocation Methods ===================== //
 int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem);
