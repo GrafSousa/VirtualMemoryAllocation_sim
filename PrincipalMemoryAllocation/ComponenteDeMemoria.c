@@ -35,7 +35,7 @@ int full_free(ComponenteDeMemoria mem){
 void show(ComponenteDeMemoria mem){
 	CellPointer aux;
 	aux = mem.first->next;
-	//aux = mem.last->prev;
+	//aux = mem.last;
 	printf("====================== Segment Information ======================\n");
 	while(aux != NULL){
 		if(aux->seg.status){//Verifica se a estrutura Process foi inicializada
@@ -99,8 +99,8 @@ int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem){
 				//Atualizando apontadores
 				new->next = aux->next;
 				new->prev = aux;
-				//new->next->prev = new;
-				//aux->next->prev = new;
+				if(new->next != NULL)
+					new->next->prev = new;
 				aux->next = new;
 				aux->seg = s;
 				aux->next->seg = new_seg;
