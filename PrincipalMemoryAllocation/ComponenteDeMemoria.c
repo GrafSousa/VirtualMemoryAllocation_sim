@@ -97,7 +97,6 @@ int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem){
 				addr = 0;
 			
 			if(num_units*2 == aux->seg.length){//Memória alocada é exatamente o tamanho do segmento
-				printf("Tamanho é exatamente igual\n");//Debug
 				//Criando segmento para armazenar o processo
 				Segment s;
 				init_segment(&s, addr, num_units*2, P, pid);
@@ -109,7 +108,6 @@ int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem){
 				return num_cell;
 			}
 			else if(num_units*2 < aux->seg.length){//Memória alocada é menor que o tamanho do segmento
-				printf("Tamanho é menor\n");//Debug
 				//Criando segmento para armazenar o processo
 				Segment s;
 				init_segment(&s, addr, num_units*2, P, pid);
@@ -142,5 +140,34 @@ int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem){
 }
 
 int deallocate_mem(int pid, ComponenteDeMemoria * mem){
-	return 0;
+	CellPointer aux;
+	aux = mem->first->next;
+	while(aux != NULL){
+		if(aux->seg.pid == pid){
+			Segment s;
+			init_segment(&s, aux->seg.begin, aux->seg.length, L, -1);
+			aux->seg = s;
+
+			if(aux->prev != NULL){
+				aux->prev->next = aux->next;
+				if(!aux->prev->seg.status)
+					aux->prev->seg.length = aux->prev->seg.length + aux->seg.length;
+			}
+			/*else{//Caso em que o pid é o do primeiro segmento
+				aux->next->prev = NULL;
+				mem->first->next = aux->next;
+			}*/
+			if(aux->next != NULL){
+				aux->next->prev = aux->prev;
+				if(!aux->next->seg.status)
+					aux->next->seg.length = aux->next->seg.length + aux->seg.length;
+					aux->next->seg.begin = aux->seg.begin;
+			}
+
+			mem->free = mem->free + aux->seg.length;
+			return 1;
+		}
+		aux = aux->next;
+	}
+	return -1;
 }

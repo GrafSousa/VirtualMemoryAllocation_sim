@@ -25,7 +25,9 @@ int main(){
 	allocate_mem_ff(336, 7, &mem);
 	allocate_mem_ff(337, 4, &mem);
 	show(mem);
-	printf("\nINVERSO: \n\n");
-	showI(mem);
+	deallocate_mem(337, &mem);//Rodar testes para outros casos (mais de uma desalocação e em casos diferentes)
+	show(mem);
+	//printf("\nINVERSO: \n\n");
+	//showI(mem);
 	return 0;
 }
