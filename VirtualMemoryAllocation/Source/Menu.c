@@ -2,9 +2,12 @@
 
 void initSystem() {
 
+	int tamM;
+	int tamP;
 	Programa prog;
 	FPVazio( &prog );
-	leArq( &prog );
+	leArq( &prog,&tamM,&tamP );
+	printf("tam m = %d e tam p = %d",tamM,tamP);
 	menu( prog );
 	//ImprimeProg( prog );
 
