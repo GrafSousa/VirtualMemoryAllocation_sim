@@ -14,15 +14,15 @@ int Vazio(Programa prog)
 	return (prog.primeiroIns == prog.ultimoIns);
 }
 
-void InsereIns(Instruction ins, Programa *prog)
+void InsereIns(char ch, int num, Programa *prog)
 {
 	ApontadorInstruction i;
 	prog->ultimoIns->proxIns = (ApontadorInstruction) malloc(sizeof(CelulaProg));
 	prog->ultimoIns = prog->ultimoIns->proxIns;
-	int c;
-	for(c = 0; c < 50; c++){
-		prog->ultimoIns->ins[c] = ins[c];
-	}
+	
+	prog->ultimoIns->ins = ch;
+	prog->ultimoIns->numVirtual = num;
+
 	prog->ultimoIns->proxIns = NULL;
 }
 
@@ -39,11 +39,12 @@ void RetiraIns(Programa *prog)
 	free(i);
 }
 
-void ImprimeProg(Programa prog){
+void ImprimeProg(Programa prog)
+{
 	ApontadorInstruction aux;
 	aux = prog.primeiroIns->proxIns;
 	while( aux != NULL){
-		printf("%s", aux->ins);
+		printf("%c %d\n",aux->ins,aux->numVirtual);
 		aux = aux->proxIns;
 	}
 }
@@ -53,9 +54,10 @@ void leArq( Programa *prog,int *tamM, int *tamP )
 
 	FILE *arq;
 
-	char ch[50];
+	char ch;
 	char file[] = "arqTeste.txt";
 	int aux=0;
+	int leInt;
 	arq = fopen( "arqTeste.txt", "rt" );
 
 	if( arq == NULL )
@@ -67,12 +69,15 @@ void leArq( Programa *prog,int *tamM, int *tamP )
 		while( !feof( arq ) )
 		{
 
-			if ( aux < 1){
-				fscanf(arq,"%d %d",tamM,tamP);
-				aux++;}
+			if ( aux < 1 ){
+				fscanf( arq,"%d %d\n", tamM, tamP );
+				aux++;
+			}
 			else{
-				fgets( ch, 50, arq );
-				InsereIns( ch, prog );}
+				fscanf( arq,"%c %d\n",&ch, &leInt );
+				InsereIns( ch, leInt, prog );
+				setbuf( stdin, 0 );
+				}
 
 		} // fim do while
 

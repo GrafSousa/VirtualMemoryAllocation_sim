@@ -1,20 +1,30 @@
 #include "Menu.h"
 
+
 void initSystem() {
 
-	int tamM;
-	int tamP;
+	int sizeVirtPage , sizePageFrame;
 	Programa prog;
+
 	FPVazio( &prog );
-	leArq( &prog,&tamM,&tamP );
-	printf("tam m = %d e tam p = %d",tamM,tamP);
-	menu( prog );
-	//ImprimeProg( prog );
+	leArq( &prog, &sizePageFrame, &sizeVirtPage );
+
+	sizeVirtPage = sizeVirtPage - 1;
+	sizePageFrame = sizePageFrame - 1;
+
+	int virtualPage[ sizeVirtPage];
+	int pageFrame[ sizePageFrame];
+	
+	for( int i = 0; i < sizeVirtPage; i++ ){
+		virtualPage[i] = i;
+	}
+	
+	menu( prog,  pageFrame, sizePageFrame );
 
 } // fim função initSystem
 
 
-void menu( Programa prog ){
+void menu( Programa prog, int *pageFrame, int sizePageFrame ){
 
 	int opcao = 0 ;
 
@@ -36,7 +46,7 @@ void menu( Programa prog ){
 		switch( opcao ){
 
 			case 1:
-				//printf(" %s \n", prog.primeiroIns -> proxIns -> ins) ;
+				fifo( prog, pageFrame, sizePageFrame );
 				break;
 			case 2:
 				printf("SEGUNDA CHANCE\n");
@@ -58,3 +68,49 @@ void menu( Programa prog ){
 
 }
 
+void fifo( Programa prog, int *pageFrame, int sizePageFrame ){
+
+	PageFrame queuePageFrame;
+	FPVazioPage( &queuePageFrame );
+	percorrePrograma( prog, pageFrame, sizePageFrame, &queuePageFrame );
+	ImprimePage( queuePageFrame );
+}
+
+void percorrePrograma( Programa prog, int *pageFrame, int sizePageFrame, PageFrame *queuePageFrame){
+
+	ApontadorInstruction aux;
+	aux = prog.primeiroIns->proxIns;
+	int count = 0;
+
+	while( aux != NULL){
+		
+		if( aux -> ins == 'R'){
+
+			printf("LEU R\n");
+		}
+
+		if( aux -> ins == 'W'){
+
+			setPageFrame(  pageFrame, sizePageFrame , aux -> numVirtual, count, queuePageFrame);
+			count++;
+		}
+
+		aux = aux->proxIns;
+	}
+}
+
+void setPageFrame( int *pageFrame, int sizePageFrame, int page, int count, PageFrame *queuePageFrame){
+
+
+	if( count >= sizePageFrame ){
+
+		InserePage( page, queuePageFrame );
+		
+	}
+	else{
+
+		pageFrame[count] = page;
+		printf("Moldura de pagina: = %d \n", pageFrame[count] );
+
+	}
+}
