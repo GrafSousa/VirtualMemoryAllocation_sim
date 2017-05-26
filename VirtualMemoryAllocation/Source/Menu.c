@@ -19,14 +19,15 @@ void initSystem() {
 		virtualPage[i] = i;
 	}
 	
-	menu( prog,  pageFrame, sizePageFrame );
+	menu( prog, sizePageFrame, virtualPage );
 
 } // fim função initSystem
 
 
-void menu( Programa prog, int *pageFrame, int sizePageFrame ){
+void menu( Programa prog, int sizePageFrame, int *virtualPage ){
 
 	int opcao = 0 ;
+	int missRate = 0;
 
 	do{
 		printf("\n");
@@ -46,7 +47,7 @@ void menu( Programa prog, int *pageFrame, int sizePageFrame ){
 		switch( opcao ){
 
 			case 1:
-				fifo( prog, pageFrame, sizePageFrame );
+				fifo( prog, sizePageFrame, virtualPage, missRate );
 				break;
 			case 2:
 				printf("SEGUNDA CHANCE\n");
@@ -68,49 +69,64 @@ void menu( Programa prog, int *pageFrame, int sizePageFrame ){
 
 }
 
-void fifo( Programa prog, int *pageFrame, int sizePageFrame ){
+void fifo( Programa prog, int sizePageFrame, int *virtualPage, int missRate ){
 
 	PageFrame queuePageFrame;
 	FPVazioPage( &queuePageFrame );
-	percorrePrograma( prog, pageFrame, sizePageFrame, &queuePageFrame );
-	ImprimePage( queuePageFrame );
+	percorrePrograma( prog, sizePageFrame, &queuePageFrame, virtualPage, missRate );
 }
 
-void percorrePrograma( Programa prog, int *pageFrame, int sizePageFrame, PageFrame *queuePageFrame){
+void percorrePrograma( Programa prog, int sizePageFrame, PageFrame *queuePageFrame, int *virtualPage, int missRate){
 
 	ApontadorInstruction aux;
 	aux = prog.primeiroIns->proxIns;
 	int count = 0;
+	int count_instr = 0;
 
 	while( aux != NULL){
 		
 		if( aux -> ins == 'R'){
 
-			printf("LEU R\n");
+			if( percorreLista( queuePageFrame, aux -> numVirtual ) == 0 ){
+				missRate++;
+
+			}
 		}
 
 		if( aux -> ins == 'W'){
 
-			setPageFrame(  pageFrame, sizePageFrame , aux -> numVirtual, count, queuePageFrame);
-			count++;
+			if( percorreLista( queuePageFrame, aux -> numVirtual ) == 1 ) {
+				printf("Pagina ja esta memoria\n");
+			}
+			else if( percorreLista( queuePageFrame, aux -> numVirtual ) == 0 ){
+
+
+				if( count == sizePageFrame ){
+					retiraPage( queuePageFrame );
+					inserePage( virtualPage[aux -> numVirtual] , queuePageFrame ); 
+					missRate++;
+				}
+				
+				else{
+					
+					inserePage( virtualPage[aux -> numVirtual] , queuePageFrame ); 
+					count++;
+					missRate++;
+				}
+				
+			}
 		}
 
 		aux = aux->proxIns;
+		count_instr++;
 	}
+
+	imprimeMissRate( missRate, count_instr );
 }
 
-void setPageFrame( int *pageFrame, int sizePageFrame, int page, int count, PageFrame *queuePageFrame){
+void imprimeMissRate( int missRate, int count_instr ){
 
+	printf("MISS RATE = %d%%\n", (missRate * 100)/ count_instr);
 
-	if( count >= sizePageFrame ){
-
-		InserePage( page, queuePageFrame );
-		
-	}
-	else{
-
-		pageFrame[count] = page;
-		printf("Moldura de pagina: = %d \n", pageFrame[count] );
-
-	}
 }
+

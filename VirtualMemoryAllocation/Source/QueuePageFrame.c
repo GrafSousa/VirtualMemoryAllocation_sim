@@ -15,7 +15,7 @@ int VazioPage(PageFrame pageFrame)
 	return (pageFrame.primeiroPage == pageFrame.ultimoPage);
 }
 
-void InserePage( int numPage, PageFrame *pageFrame)
+void inserePage( int numPage, PageFrame *pageFrame)
 {
 	ApontadorPage i;
 	pageFrame->ultimoPage->prox = (ApontadorPage) malloc(sizeof(CelulaPage));
@@ -26,12 +26,12 @@ void InserePage( int numPage, PageFrame *pageFrame)
 	pageFrame->ultimoPage->prox = NULL;
 }
 
-void RetiraPage(PageFrame *pageFrame)
+void retiraPage(PageFrame *pageFrame)
 {
 	ApontadorPage i;
 	if(VazioPage(*pageFrame))
 	{ 
-		printf("Erro! Programa vazio.\n"); 
+		printf("Erro! Moldura de pagina vazia.\n"); 
 		return;
 	}
 	i = pageFrame->primeiroPage;
@@ -39,7 +39,7 @@ void RetiraPage(PageFrame *pageFrame)
 	free(i);
 }
 
-void ImprimePage(PageFrame pageFrame)
+void imprimePage(PageFrame pageFrame)
 {
 	ApontadorPage aux;
 	aux = pageFrame.primeiroPage->prox;
@@ -49,3 +49,18 @@ void ImprimePage(PageFrame pageFrame)
 	}
 }
 
+int percorreLista( PageFrame *pageFrame, int page ){
+
+	ApontadorPage aux;
+	aux = pageFrame->primeiroPage->prox;
+
+	while( aux != NULL){
+		if( aux -> numPage == page){
+			return 1;
+		}
+		else{
+			return 0;
+		}
+		aux = aux->prox;
+	}
+}

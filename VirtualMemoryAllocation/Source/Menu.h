@@ -5,7 +5,7 @@
 
 
 void initSystem();
-void menu( Programa prog, int *pageFrame, int sizePageFrame );
-void fifo( Programa prog, int *pageFrame, int sizePageFrame );
-void percorrePrograma( Programa prog, int *pageFrame, int sizePageFrame, PageFrame *queuePageFrame);
-void setPageFrame( int *pageFrame, int sizePageFrame, int page, int count, PageFrame *queuePageFrame);
+void menu( Programa prog, int sizePageFrame, int *virtualPage );
+void fifo( Programa prog, int sizePageFrame, int *virtualPage, int missRate );
+void percorrePrograma( Programa prog, int sizePageFrame, PageFrame *queuePageFrame, int *virtualPage, int missRate );
+void imprimeMissRate( int missRate, int count_instr );

@@ -15,6 +15,7 @@ typedef struct Page
 
 void FPVazioPage(PageFrame *pageFrame);
 int VazioPage(PageFrame pageFrame);
-void InserePage( int numPage, PageFrame *pageFrame);
-void RetiraPage(PageFrame *pageFrame);
-void ImprimePage(PageFrame pageFrame);
+void inserePage( int numPage, PageFrame *pageFrame);
+void retiraPage(PageFrame *pageFrame);
+void imprimePage(PageFrame pageFrame);
+int percorreLista( PageFrame *pageFrame, int page );
