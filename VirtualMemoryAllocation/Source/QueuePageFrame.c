@@ -55,12 +55,14 @@ int percorreLista( PageFrame *pageFrame, int page ){
 	aux = pageFrame->primeiroPage->prox;
 
 	while( aux != NULL){
+
 		if( aux -> numPage == page){
 			return 1;
 		}
 		else{
-			return 0;
+			aux = aux->prox;		
 		}
-		aux = aux->prox;
 	}
+	
+	return 0;
 }

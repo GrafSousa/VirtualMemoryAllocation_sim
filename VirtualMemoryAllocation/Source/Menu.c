@@ -74,6 +74,7 @@ void fifo( Programa prog, int sizePageFrame, int *virtualPage, int missRate ){
 	PageFrame queuePageFrame;
 	FPVazioPage( &queuePageFrame );
 	percorrePrograma( prog, sizePageFrame, &queuePageFrame, virtualPage, missRate );
+
 }
 
 void percorrePrograma( Programa prog, int sizePageFrame, PageFrame *queuePageFrame, int *virtualPage, int missRate){
@@ -89,7 +90,7 @@ void percorrePrograma( Programa prog, int sizePageFrame, PageFrame *queuePageFra
 
 			if( percorreLista( queuePageFrame, aux -> numVirtual ) == 0 ){
 				missRate++;
-
+				
 			}
 		}
 
@@ -100,13 +101,11 @@ void percorrePrograma( Programa prog, int sizePageFrame, PageFrame *queuePageFra
 			}
 			else if( percorreLista( queuePageFrame, aux -> numVirtual ) == 0 ){
 
-
 				if( count == sizePageFrame ){
 					retiraPage( queuePageFrame );
 					inserePage( virtualPage[aux -> numVirtual] , queuePageFrame ); 
 					missRate++;
-				}
-				
+				}	
 				else{
 					
 					inserePage( virtualPage[aux -> numVirtual] , queuePageFrame ); 
@@ -120,6 +119,7 @@ void percorrePrograma( Programa prog, int sizePageFrame, PageFrame *queuePageFra
 		aux = aux->proxIns;
 		count_instr++;
 	}
+
 
 	imprimeMissRate( missRate, count_instr );
 }
