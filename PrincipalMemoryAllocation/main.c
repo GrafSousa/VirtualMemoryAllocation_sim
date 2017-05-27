@@ -19,19 +19,20 @@ int main(){
 	//generate_processes(5, pids);
 	
 	init(&mem);
-	allocate_mem_ff(333, 10, &mem);
+	requistions_generator(10000, mem);
+	/*allocate_mem_ff(333, 10, &mem);
 	allocate_mem_ff(334, 3, &mem);
 	allocate_mem_ff(335, 5, &mem);
 	allocate_mem_ff(336, 7, &mem);
-	allocate_mem_ff(337, 4, &mem);
-	show(mem);
+	allocate_mem_ff(337, 4, &mem);*/
+	//show(mem);
 	//deallocate_mem(333, &mem);//Rodar testes para outros casos (mais de uma desalocação e em casos diferentes)
 	//show(mem);
-	deallocate_mem(334, &mem);
+	//deallocate_mem(334, &mem);
 	//show(mem);
-	deallocate_mem(336, &mem);
+	//deallocate_mem(336, &mem);
 	//show(mem);
-	deallocate_mem(335, &mem);
+	//deallocate_mem(335, &mem);
 	//show(mem);
 	//deallocate_mem(337, &mem);
 	show(mem);

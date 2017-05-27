@@ -1,7 +1,7 @@
 #include "ComponenteDeMemoria.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <time.h>
 void init_segment(Segment * seg, int begin, int length, int status, int pid){
 	seg->begin = begin;
 	seg->length = length;
@@ -15,7 +15,7 @@ void init_segment(Segment * seg, int begin, int length, int status, int pid){
 
 void init(ComponenteDeMemoria * mem){
 	Segment seg;
-	init_segment(&seg, 0, 256, L, -1);
+	init_segment(&seg, 0,256, L, -1);
 	mem->free = 256;
 	
 	mem->first = (CellPointer) malloc(sizeof(MemCell));
@@ -135,7 +135,11 @@ int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem){
 		}
 		aux = aux->next;
 	}
-	return -1;
+	if (aux == NULL)
+	{
+		return -1;
+	}
+	
 }
 
 int deallocate_mem(int pid, ComponenteDeMemoria * mem){
@@ -180,3 +184,39 @@ void merge_free_cells(ComponenteDeMemoria * mem){
 		aux = aux->next;
 	}
 }
+int allocate_requisition(ComponenteDeMemoria  mem){
+	int x,y,erro=0;
+		//srand(time(NULL));
+			x = 1 + (rand()%1000);
+			y = 3 + (rand()%10);
+			allocate_mem_ff(x,y, &mem);
+				
+
+}
+int deallocate_requisition(ComponenteDeMemoria  mem){
+	int x;
+		//srand(time(NULL));
+			x = 1 + (rand()%100);
+			deallocate_mem(x,&mem);
+
+	
+}
+void requistions_generator(int num_req, ComponenteDeMemoria  mem){ 
+	int i,x;
+		srand(time(NULL));
+		for(i=0;i<num_req;i++){
+		x = (rand()%2);
+		if(x==0){
+			allocate_requisition(mem);
+			
+		}
+
+		else{
+			deallocate_requisition(mem);
+		
+		}
+
+	}
+	
+}
+
