@@ -20,7 +20,8 @@ int deallocate_mem(int pid, ComponenteDeMemoria * mem){
 		}
 		aux = aux->next;
 	}
-	return -1;
+	if(aux==NULL)
+		return -1;
 }
 
 void merge_free_cells(ComponenteDeMemoria * mem){

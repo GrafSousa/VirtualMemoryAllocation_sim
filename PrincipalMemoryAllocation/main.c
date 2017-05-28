@@ -15,39 +15,23 @@ int main(){
 	ComponenteDeMemoria mem;
 	long int * pids;
 	
-	//Geração de pids
-	//generate_processes(5, pids);
-	
+
+	printf("=============First Fit==========\n");	
+	printf("Memory length: 256\n");
 	init(&mem, 256);
-	requistions_generator(1000, &mem);
-	/*allocate_mem_ff(333, 10, &mem);
-	allocate_mem_ff(334, 3, &mem);
-	allocate_mem_ff(335, 5, &mem);
-	allocate_mem_ff(336, 7, &mem);
-	allocate_mem_ff(337, 4, &mem);*/
+	requistions_generator(10000, &mem);
+	
 	//show(mem);
-	//deallocate_mem(333, &mem);//Rodar testes para outros casos (mais de uma desalocação e em casos diferentes)
-	//show(mem);
-	//deallocate_mem(334, &mem);
-	//show(mem);
-	//deallocate_mem(336, &mem);
-	//show(mem);
-	//deallocate_mem(335, &mem);
-	//show(mem);
-	//deallocate_mem(337, &mem);
-	show(mem);
 	file_write(mem);
+	printf("Memory length: 512\n");
 	init(&mem, 512);
-	requistions_generator(5000, &mem);
-	show(mem);
+	requistions_generator(10000, &mem);
+//	show(mem);
 	file_write(mem);
+	printf("Memory length: 1024\n");
 	init(&mem, 1024);
 	requistions_generator(10000, &mem);
-	show(mem);
+//	show(mem);
 	file_write(mem);
-	//merge_free_cells(&mem);
-	//show(mem);
-	//printf("\nINVERSO: \n\n");
-	//showI(mem);
 	return 0;
 }

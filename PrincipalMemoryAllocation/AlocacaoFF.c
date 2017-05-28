@@ -62,3 +62,17 @@ int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem){
 	}
 	
 }
+int fragment_count_ff(ComponenteDeMemoria mem){
+	CellPointer aux;
+	int fragments = 0;
+	aux = mem.first->next;
+	while(aux!=NULL){
+		if (!aux->seg.status)
+		{
+			if(aux->seg.length<6)
+				fragments++;
+		}
+		aux = aux->next;
+	}
+	return fragments;
+}

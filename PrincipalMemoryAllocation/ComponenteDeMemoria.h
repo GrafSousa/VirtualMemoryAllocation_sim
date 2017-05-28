@@ -29,7 +29,8 @@ int fragment_count(ComponenteDeMemoria mem);
 void show(ComponenteDeMemoria mem);
 void showI(ComponenteDeMemoria mem);
 void merge_free_cells(ComponenteDeMemoria * mem);
-
+void file_write(ComponenteDeMemoria mem);
+int fragment_count_ff(ComponenteDeMemoria mem);
 // ===================== Allocation Methods ===================== //
 int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem);
 // ===================== Requisitons Methods ==================== //

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 void init_segment(Segment * seg, int begin, int length, int status, int pid){
 	seg->begin = begin;
 	seg->length = length;
@@ -94,7 +95,7 @@ arq = fopen("ArqGrav.txt", "a+");
 
 if (arq == NULL){
     printf("Problemas na CRIACAO do arquivo\n");
-    return 0;
+    return;
 } 	
 
 
@@ -104,15 +105,15 @@ if (arq == NULL){
 	result = fprintf(arq, buffer); 
 	
 	while(aux != NULL){
-		if(aux->seg.status){//Verifica se a estrutura Process foi inicializada
-			n = sprintf(buffer, "Process ID: %ld\n", aux->seg.pid);
+		if(!aux->seg.status){//Verifica se a estrutura Process foi inicializada
+			/*n = sprintf(buffer, "Process ID: %ld\n", aux->seg.pid);
 			result = fprintf(arq, buffer); 
 			n = sprintf(buffer,"Begin: %d\n", aux->seg.begin);
 			result = fprintf(arq, buffer); 
 			n = sprintf(buffer, "length: %d\n", aux->seg.length);
 			result = fprintf(arq, buffer); 
 		}
-		else{
+		else{*/
 			n =sprintf(buffer,"Free\n");
 			result = fprintf(arq, buffer); 
 			n=sprintf(buffer, "Begin: %d\n", aux->seg.begin);
@@ -124,6 +125,8 @@ if (arq == NULL){
 		//fprintf("\n");
 	}
 	n=sprintf(buffer, "Memory available: %dkB\n", mem.free);
+	result = fprintf(arq, buffer); 
+	n=sprintf(buffer, "Fragmentos de memoria inutilizaveis: %d\n", fragment_count_ff(mem));
 	result = fprintf(arq, buffer); 
 
 if (result == EOF)
