@@ -1,0 +1,561 @@
+====================== Segment Information ======================
+Process ID: 39
+Begin: 0
+length: 8
+Process ID: 37
+Begin: 8
+length: 8
+Process ID: 45
+Begin: 16
+length: 6
+Free
+Begin: 22
+length: 4
+Process ID: 64
+Begin: 26
+length: 12
+Process ID: 31
+Begin: 38
+length: 6
+Process ID: 29
+Begin: 44
+length: 6
+Process ID: 99
+Begin: 50
+length: 6
+Process ID: 23
+Begin: 56
+length: 8
+Process ID: 14
+Begin: 64
+length: 8
+Process ID: 5
+Begin: 72
+length: 8
+Process ID: 4
+Begin: 80
+length: 14
+Process ID: 4
+Begin: 94
+length: 8
+Process ID: 88
+Begin: 102
+length: 20
+Process ID: 83
+Begin: 122
+length: 8
+Process ID: 65
+Begin: 130
+length: 6
+Free
+Begin: 136
+length: 2
+Process ID: 69
+Begin: 138
+length: 6
+Free
+Begin: 144
+length: 2
+Process ID: 22
+Begin: 146
+length: 8
+Process ID: 49
+Begin: 154
+length: 6
+Process ID: 56
+Begin: 160
+length: 8
+Process ID: 57
+Begin: 168
+length: 6
+Process ID: 88
+Begin: 174
+length: 8
+Process ID: 74
+Begin: 182
+length: 8
+Process ID: 82
+Begin: 190
+length: 12
+Process ID: 51
+Begin: 202
+length: 6
+Free
+Begin: 208
+length: 2
+Process ID: 64
+Begin: 210
+length: 6
+Process ID: 6
+Begin: 216
+length: 10
+Free
+Begin: 226
+length: 4
+Process ID: 24
+Begin: 230
+length: 12
+Process ID: 71
+Begin: 242
+length: 6
+Process ID: 22
+Begin: 248
+length: 8
+Memory available: 14kB
+====================== Segment Information ======================
+Process ID: 38
+Begin: 0
+length: 6
+Process ID: 69
+Begin: 6
+length: 6
+Process ID: 93
+Begin: 12
+length: 8
+Process ID: 18
+Begin: 20
+length: 14
+Process ID: 38
+Begin: 34
+length: 6
+Process ID: 94
+Begin: 40
+length: 6
+Process ID: 38
+Begin: 46
+length: 8
+Process ID: 47
+Begin: 54
+length: 6
+Process ID: 26
+Begin: 60
+length: 6
+Free
+Begin: 66
+length: 2
+Process ID: 45
+Begin: 68
+length: 14
+Process ID: 76
+Begin: 82
+length: 18
+Free
+Begin: 100
+length: 2
+Process ID: 41
+Begin: 102
+length: 8
+Process ID: 87
+Begin: 110
+length: 14
+Free
+Begin: 124
+length: 4
+Process ID: 100
+Begin: 128
+length: 10
+Process ID: 49
+Begin: 138
+length: 12
+Process ID: 41
+Begin: 150
+length: 8
+Process ID: 16
+Begin: 158
+length: 8
+Process ID: 94
+Begin: 166
+length: 8
+Process ID: 90
+Begin: 174
+length: 10
+Free
+Begin: 184
+length: 2
+Process ID: 11
+Begin: 186
+length: 12
+Process ID: 7
+Begin: 198
+length: 10
+Process ID: 60
+Begin: 208
+length: 6
+Process ID: 60
+Begin: 214
+length: 12
+Process ID: 65
+Begin: 226
+length: 6
+Free
+Begin: 232
+length: 2
+Process ID: 87
+Begin: 234
+length: 10
+Process ID: 87
+Begin: 244
+length: 12
+Process ID: 84
+Begin: 256
+length: 16
+Process ID: 42
+Begin: 272
+length: 10
+Process ID: 95
+Begin: 282
+length: 14
+Process ID: 3
+Begin: 296
+length: 14
+Process ID: 71
+Begin: 310
+length: 8
+Process ID: 80
+Begin: 318
+length: 8
+Free
+Begin: 326
+length: 10
+Process ID: 28
+Begin: 336
+length: 12
+Process ID: 16
+Begin: 348
+length: 16
+Free
+Begin: 364
+length: 2
+Process ID: 48
+Begin: 366
+length: 20
+Free
+Begin: 386
+length: 4
+Process ID: 88
+Begin: 390
+length: 10
+Process ID: 89
+Begin: 400
+length: 10
+Process ID: 28
+Begin: 410
+length: 8
+Free
+Begin: 418
+length: 10
+Process ID: 42
+Begin: 428
+length: 12
+Process ID: 2
+Begin: 440
+length: 20
+Process ID: 75
+Begin: 460
+length: 14
+Process ID: 37
+Begin: 474
+length: 14
+Process ID: 25
+Begin: 488
+length: 6
+Free
+Begin: 494
+length: 2
+Process ID: 9
+Begin: 496
+length: 12
+Free
+Begin: 508
+length: 4
+Memory available: 44kB
+====================== Segment Information ======================
+Process ID: 87
+Begin: 0
+length: 6
+Process ID: 29
+Begin: 6
+length: 6
+Process ID: 27
+Begin: 12
+length: 6
+Process ID: 28
+Begin: 18
+length: 10
+Process ID: 39
+Begin: 28
+length: 6
+Free
+Begin: 34
+length: 2
+Process ID: 70
+Begin: 36
+length: 10
+Process ID: 1
+Begin: 46
+length: 6
+Process ID: 9
+Begin: 52
+length: 10
+Process ID: 9
+Begin: 62
+length: 16
+Free
+Begin: 78
+length: 4
+Process ID: 9
+Begin: 82
+length: 14
+Free
+Begin: 96
+length: 2
+Process ID: 9
+Begin: 98
+length: 10
+Process ID: 63
+Begin: 108
+length: 14
+Process ID: 9
+Begin: 122
+length: 8
+Process ID: 30
+Begin: 130
+length: 8
+Process ID: 73
+Begin: 138
+length: 6
+Free
+Begin: 144
+length: 2
+Process ID: 74
+Begin: 146
+length: 8
+Free
+Begin: 154
+length: 8
+Process ID: 5
+Begin: 162
+length: 8
+Process ID: 37
+Begin: 170
+length: 8
+Process ID: 13
+Begin: 178
+length: 6
+Process ID: 35
+Begin: 184
+length: 10
+Process ID: 16
+Begin: 194
+length: 8
+Free
+Begin: 202
+length: 10
+Process ID: 35
+Begin: 212
+length: 12
+Process ID: 94
+Begin: 224
+length: 12
+Process ID: 27
+Begin: 236
+length: 14
+Process ID: 91
+Begin: 250
+length: 12
+Free
+Begin: 262
+length: 2
+Process ID: 9
+Begin: 264
+length: 6
+Process ID: 27
+Begin: 270
+length: 24
+Process ID: 17
+Begin: 294
+length: 10
+Process ID: 22
+Begin: 304
+length: 14
+Process ID: 38
+Begin: 318
+length: 10
+Process ID: 98
+Begin: 328
+length: 10
+Process ID: 11
+Begin: 338
+length: 12
+Free
+Begin: 350
+length: 2
+Process ID: 27
+Begin: 352
+length: 6
+Process ID: 93
+Begin: 358
+length: 8
+Process ID: 9
+Begin: 366
+length: 16
+Process ID: 30
+Begin: 382
+length: 6
+Process ID: 85
+Begin: 388
+length: 18
+Process ID: 12
+Begin: 406
+length: 8
+Process ID: 11
+Begin: 414
+length: 10
+Free
+Begin: 424
+length: 8
+Process ID: 32
+Begin: 432
+length: 12
+Process ID: 20
+Begin: 444
+length: 24
+Process ID: 20
+Begin: 468
+length: 14
+Process ID: 38
+Begin: 482
+length: 10
+Process ID: 77
+Begin: 492
+length: 10
+Process ID: 20
+Begin: 502
+length: 20
+Process ID: 87
+Begin: 522
+length: 10
+Process ID: 98
+Begin: 532
+length: 10
+Process ID: 43
+Begin: 542
+length: 10
+Free
+Begin: 552
+length: 2
+Process ID: 74
+Begin: 554
+length: 18
+Process ID: 91
+Begin: 572
+length: 20
+Process ID: 57
+Begin: 592
+length: 12
+Process ID: 74
+Begin: 604
+length: 12
+Process ID: 77
+Begin: 616
+length: 10
+Process ID: 51
+Begin: 626
+length: 12
+Free
+Begin: 638
+length: 2
+Process ID: 20
+Begin: 640
+length: 20
+Process ID: 89
+Begin: 660
+length: 20
+Process ID: 45
+Begin: 680
+length: 12
+Process ID: 10
+Begin: 692
+length: 12
+Process ID: 26
+Begin: 704
+length: 8
+Process ID: 71
+Begin: 712
+length: 16
+Process ID: 96
+Begin: 728
+length: 10
+Process ID: 21
+Begin: 738
+length: 8
+Process ID: 80
+Begin: 746
+length: 18
+Process ID: 58
+Begin: 764
+length: 14
+Process ID: 29
+Begin: 778
+length: 14
+Free
+Begin: 792
+length: 2
+Process ID: 44
+Begin: 794
+length: 8
+Process ID: 20
+Begin: 802
+length: 14
+Process ID: 23
+Begin: 816
+length: 18
+Process ID: 42
+Begin: 834
+length: 22
+Process ID: 51
+Begin: 856
+length: 20
+Process ID: 89
+Begin: 876
+length: 18
+Process ID: 91
+Begin: 894
+length: 12
+Process ID: 32
+Begin: 906
+length: 10
+Process ID: 84
+Begin: 916
+length: 14
+Free
+Begin: 930
+length: 2
+Process ID: 94
+Begin: 932
+length: 12
+Process ID: 98
+Begin: 944
+length: 12
+Free
+Begin: 956
+length: 10
+Process ID: 96
+Begin: 966
+length: 14
+Process ID: 87
+Begin: 980
+length: 12
+Free
+Begin: 992
+length: 4
+Process ID: 36
+Begin: 996
+length: 14
+Process ID: 21
+Begin: 1010
+length: 10
+Free
+Begin: 1020
+length: 4
+Memory available: 66kB

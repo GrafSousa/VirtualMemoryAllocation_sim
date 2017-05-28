@@ -22,7 +22,7 @@ typedef struct ComponenteDeMemoria {
 
 // =========================== Methods =========================== //
 void init_segment(Segment * seg, int begin, int length, int status, int pid);
-void init(ComponenteDeMemoria * mem); //Equivalente ao Faz lista vazia
+void init(ComponenteDeMemoria * mem, int length); //Equivalente ao Faz lista vazia
 int deallocate_mem(int pid, ComponenteDeMemoria * mem);
 int full_free(ComponenteDeMemoria mem);//Verifica se está todo vazia
 int fragment_count(ComponenteDeMemoria mem);
@@ -33,6 +33,6 @@ void merge_free_cells(ComponenteDeMemoria * mem);
 // ===================== Allocation Methods ===================== //
 int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem);
 // ===================== Requisitons Methods ==================== //
-void requistions_generator(int num_req, ComponenteDeMemoria  mem);
-int allocate_requisition(ComponenteDeMemoria  mem);
-int deallocate_requisition(ComponenteDeMemoria  mem);
+void requistions_generator(int num_req, ComponenteDeMemoria  *mem);
+int allocate_requisition(ComponenteDeMemoria  *mem);
+int deallocate_requisition(ComponenteDeMemoria  *mem);

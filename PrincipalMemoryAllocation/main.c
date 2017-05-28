@@ -18,8 +18,8 @@ int main(){
 	//Geração de pids
 	//generate_processes(5, pids);
 	
-	init(&mem);
-	requistions_generator(10000, mem);
+	init(&mem, 256);
+	requistions_generator(1000, &mem);
 	/*allocate_mem_ff(333, 10, &mem);
 	allocate_mem_ff(334, 3, &mem);
 	allocate_mem_ff(335, 5, &mem);
@@ -36,6 +36,15 @@ int main(){
 	//show(mem);
 	//deallocate_mem(337, &mem);
 	show(mem);
+	file_write(mem);
+	init(&mem, 512);
+	requistions_generator(5000, &mem);
+	show(mem);
+	file_write(mem);
+	init(&mem, 1024);
+	requistions_generator(10000, &mem);
+	show(mem);
+	file_write(mem);
 	//merge_free_cells(&mem);
 	//show(mem);
 	//printf("\nINVERSO: \n\n");
