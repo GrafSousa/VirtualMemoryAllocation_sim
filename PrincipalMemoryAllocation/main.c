@@ -19,8 +19,9 @@ int main(){
 	printf("=============First Fit==========\n");	
 	printf("Memory length: 256\n");
 	init(&mem, 256);
-	requistions_generator(10000, &mem);
+	//requistions_generator(10000, &mem);
 	
+	/*
 	//show(mem);
 	file_write(mem);
 	printf("Memory length: 512\n");
@@ -33,5 +34,10 @@ int main(){
 	requistions_generator(10000, &mem);
 	//show(mem);
 	file_write(mem);
+	*/
+
+	allocate_mem_ff(100, 4, &mem);
+	allocate_mem_ff(101, 5, &mem);
+	show(mem);
 	return 0;
 }
