@@ -3,11 +3,12 @@ typedef struct CelulaPage* ApontadorPage;
 typedef struct CelulaPage
 {
 	int numPage;
+	int bitR;
 	ApontadorPage prox;
 
 } CelulaPage;
 
-typedef struct Page
+typedef struct PageFrame
 {
 	ApontadorPage primeiroPage, ultimoPage;
 
@@ -19,3 +20,5 @@ void inserePage( int numPage, PageFrame *pageFrame);
 void retiraPage(PageFrame *pageFrame);
 void imprimePage(PageFrame pageFrame);
 int percorreLista( PageFrame *pageFrame, int page );
+void searchBitR( PageFrame *pageFrame, int page) ;
+void setBitR( PageFrame *pageFrame, int page );

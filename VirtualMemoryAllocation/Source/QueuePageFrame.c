@@ -22,6 +22,7 @@ void inserePage( int numPage, PageFrame *pageFrame)
 	pageFrame->ultimoPage = pageFrame->ultimoPage->prox;
 	
 	pageFrame->ultimoPage->numPage = numPage;
+	pageFrame->ultimoPage->bitR = 0;
 
 	pageFrame->ultimoPage->prox = NULL;
 }
@@ -36,6 +37,7 @@ void retiraPage(PageFrame *pageFrame)
 	}
 	i = pageFrame->primeiroPage;
 	pageFrame->primeiroPage = i->prox;
+
 	free(i);
 }
 
@@ -45,11 +47,12 @@ void imprimePage(PageFrame pageFrame)
 	aux = pageFrame.primeiroPage->prox;
 	while( aux != NULL){
 		printf("PAGINAS = %d\n",aux->numPage);
+		printf("BIT R = %d\n",aux->bitR);
 		aux = aux->prox;
 	}
 }
 
-int percorreLista( PageFrame *pageFrame, int page ){
+int percorreLista( PageFrame *pageFrame, int page){
 
 	ApontadorPage aux;
 	aux = pageFrame->primeiroPage->prox;
@@ -63,6 +66,51 @@ int percorreLista( PageFrame *pageFrame, int page ){
 			aux = aux->prox;		
 		}
 	}
-	
+
 	return 0;
+}
+
+void searchBitR( PageFrame *pageFrame, int page ){
+
+	PageFrame aux;
+	aux.primeiroPage = pageFrame->primeiroPage;
+	
+	
+	while( pageFrame -> primeiroPage -> prox!= NULL ){
+		
+		if( pageFrame -> primeiroPage-> bitR == 0 ){
+			
+			retiraPage( &aux );			
+			inserePage( page, pageFrame );
+			break;
+		}
+		if( pageFrame -> primeiroPage -> bitR == 1){
+			pageFrame -> primeiroPage -> bitR = 0;
+
+			retiraPage(&aux);
+			inserePage( pageFrame -> primeiroPage -> numPage, pageFrame );
+
+			
+		}
+		pageFrame -> primeiroPage  = pageFrame -> primeiroPage -> prox;
+	}
+
+	pageFrame -> primeiroPage = aux.primeiroPage;
+	
+}
+
+void setBitR( PageFrame *pageFrame, int page ){
+
+	ApontadorPage aux;
+	aux = pageFrame->primeiroPage->prox;
+
+	while( aux != NULL ){
+
+		if( aux -> numPage == page ){
+			aux -> bitR = 1;
+			break;
+		}
+
+		aux = aux -> prox;
+	}
 }

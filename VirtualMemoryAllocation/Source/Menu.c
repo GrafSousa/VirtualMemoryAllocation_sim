@@ -50,7 +50,7 @@ void menu( Programa prog, int sizePageFrame, int *virtualPage ){
 				fifo( prog, sizePageFrame, virtualPage, missRate );
 				break;
 			case 2:
-				printf("SEGUNDA CHANCE\n");
+				secondChance( prog, sizePageFrame, virtualPage, missRate );
 				break;
 			case 3:
 				printf("RELOGIO\n");
@@ -73,17 +73,17 @@ void fifo( Programa prog, int sizePageFrame, int *virtualPage, int missRate ){
 
 	PageFrame queuePageFrame;
 	FPVazioPage( &queuePageFrame );
-	percorrePrograma( prog, sizePageFrame, &queuePageFrame, virtualPage, missRate );
+	percorreProgramaFifo( prog, sizePageFrame, &queuePageFrame, virtualPage, missRate );
 
 }
 
-void percorrePrograma( Programa prog, int sizePageFrame, PageFrame *queuePageFrame, int *virtualPage, int missRate){
+
+void percorreProgramaFifo( Programa prog, int sizePageFrame, PageFrame *queuePageFrame, int *virtualPage, int missRate){
 
 	ApontadorInstruction aux;
 	aux = prog.primeiroIns->proxIns;
 	int count = 0;
 	int count_instr = 0;
-
 	while( aux != NULL){
 		
 		if( aux -> ins == 'R'){
@@ -96,14 +96,18 @@ void percorrePrograma( Programa prog, int sizePageFrame, PageFrame *queuePageFra
 
 		if( aux -> ins == 'W'){
 
+			//Se a página ja estiver na memória
 			if( percorreLista( queuePageFrame, aux -> numVirtual ) == 1 ) {
 				printf("Pagina ja esta memoria\n");
 			}
+			//Caso a página não esteja na memória
 			else if( percorreLista( queuePageFrame, aux -> numVirtual ) == 0 ){
 
+				//Se a moldura já estiver cheia
 				if( count == sizePageFrame ){
 					retiraPage( queuePageFrame );
 					inserePage( virtualPage[aux -> numVirtual] , queuePageFrame ); 
+
 					missRate++;
 				}	
 				else{
@@ -124,8 +128,69 @@ void percorrePrograma( Programa prog, int sizePageFrame, PageFrame *queuePageFra
 	imprimeMissRate( missRate, count_instr );
 }
 
-void imprimeMissRate( int missRate, int count_instr ){
+void secondChance( Programa prog, int sizePageFrame, int *virtualPage, int missRate ){
+	PageFrame queuePageFrame;
+	FPVazioPage( &queuePageFrame );
+	percorreProgramaSC( prog, sizePageFrame, &queuePageFrame, virtualPage, missRate );
+	//imprimePage(queuePageFrame);
+	
+}
 
+void percorreProgramaSC( Programa prog, int sizePageFrame, PageFrame *queuePageFrame, int *virtualPage, int missRate ){
+
+	ApontadorInstruction aux;
+	aux = prog.primeiroIns->proxIns;
+	int count = 0;
+	int count_instr = 0;
+
+	while ( aux != NULL ){
+
+		if( aux -> ins == 'R'){
+
+			// página não está na fila
+			if( percorreLista( queuePageFrame, aux -> numVirtual ) == 0 ){
+				missRate++;
+				
+			}
+			 if( percorreLista( queuePageFrame, aux -> numVirtual ) == 1 ){
+				setBitR( queuePageFrame, aux -> numVirtual );
+				
+			}
+		}
+
+		else if( aux -> ins == 'W'){
+
+			//Se a página já estiver na memória
+			if( percorreLista( queuePageFrame, aux -> numVirtual ) == 1 ) {
+				printf("Pagina ja esta memoria\n");
+			}
+			//Se a página não estiver na memória
+			else if( percorreLista( queuePageFrame, aux -> numVirtual ) == 0 ){
+
+				//Se a moldura já estiver cheia
+				if( count == sizePageFrame ){
+					searchBitR( queuePageFrame, aux -> numVirtual );
+					missRate++;
+				}	
+				else{
+					
+					inserePage( virtualPage[aux -> numVirtual] , queuePageFrame ); 
+					count++;
+					missRate++;
+				}
+			}
+		}
+
+		aux = aux -> proxIns;
+		count_instr++;
+	}
+
+	imprimeMissRate( missRate, count_instr );
+
+}
+
+void imprimeMissRate( int missRate, int count_instr ){
+	
 	printf("MISS RATE = %d%%\n", (missRate * 100)/ count_instr);
 
 }
