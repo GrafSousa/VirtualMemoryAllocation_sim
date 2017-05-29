@@ -80,23 +80,21 @@ void showI(ComponenteDeMemoria mem){
 	printf("Memory available: %dkB\n", mem.free);
 }
 
-
-
 void file_write(ComponenteDeMemoria mem){
 	
 
-FILE *arq;
-int result;
-char Str[50];
-char buffer [5000];
-int n;
-CellPointer aux;
-arq = fopen("ArqGrav.txt", "a+");
+	FILE *arq;
+	int result;
+	char Str[50];
+	char buffer [5000];
+	int n;
+	CellPointer aux;
+	arq = fopen("ArqGrav.txt", "a+");
 
-if (arq == NULL){
-    printf("Problemas na CRIACAO do arquivo\n");
-    return;
-} 	
+	if (arq == NULL){
+	    printf("Problemas na CRIACAO do arquivo\n");
+	    return;
+	} 	
 
 
 	aux = mem.first->next;
@@ -126,17 +124,29 @@ if (arq == NULL){
 	}
 	n=sprintf(buffer, "Memory available: %dkB\n", mem.free);
 	result = fprintf(arq, buffer); 
-	n=sprintf(buffer, "Fragmentos de memoria inutilizaveis: %d\n", fragment_count_ff(mem));
+	n=sprintf(buffer, "Fragmentos de memoria inutilizaveis: %d\n", fragment_count(mem));
 	result = fprintf(arq, buffer); 
 
-if (result == EOF)
-   	printf("Erro na Gravacao\n");
-//fflush(stdin);
+	if (result == EOF)
+	   	printf("Erro na Gravacao\n");
+	//fflush(stdin);
 
 
-fclose(arq);  
+	fclose(arq);  
   
 }
 
-
-
+int fragment_count(ComponenteDeMemoria mem){
+	CellPointer aux;
+	int fragments = 0;
+	aux = mem.first->next;
+	while(aux!=NULL){
+		if (!aux->seg.status)
+		{
+			if(aux->seg.length<6)
+				fragments++;
+		}
+		aux = aux->next;
+	}
+	return fragments;
+}

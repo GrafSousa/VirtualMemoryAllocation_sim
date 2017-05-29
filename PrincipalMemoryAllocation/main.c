@@ -26,12 +26,12 @@ int main(){
 	printf("Memory length: 512\n");
 	init(&mem, 512);
 	requistions_generator(10000, &mem);
-//	show(mem);
+	//show(mem);
 	file_write(mem);
 	printf("Memory length: 1024\n");
 	init(&mem, 1024);
 	requistions_generator(10000, &mem);
-//	show(mem);
+	//show(mem);
 	file_write(mem);
 	return 0;
 }

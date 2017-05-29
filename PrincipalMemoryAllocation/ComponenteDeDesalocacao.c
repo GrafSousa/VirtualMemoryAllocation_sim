@@ -1,6 +1,7 @@
 #include "ComponenteDeMemoria.h"
 #include <stdio.h>
 #include <stdlib.h>
+
 int deallocate_mem(int pid, ComponenteDeMemoria * mem){
 	CellPointer aux;
 	aux = mem->first->next;
@@ -20,7 +21,7 @@ int deallocate_mem(int pid, ComponenteDeMemoria * mem){
 		}
 		aux = aux->next;
 	}
-	if(aux==NULL)
+	if(aux == NULL)
 		return -1;
 }
 

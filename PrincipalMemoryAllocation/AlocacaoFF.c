@@ -1,6 +1,7 @@
 #include "ComponenteDeMemoria.h"
 #include <stdio.h>
 #include <stdlib.h>
+
 int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem){
 	CellPointer aux, new;
 	int addr, num_cell = 0;
@@ -61,18 +62,4 @@ int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem){
 		return -1;
 	}
 	
-}
-int fragment_count_ff(ComponenteDeMemoria mem){
-	CellPointer aux;
-	int fragments = 0;
-	aux = mem.first->next;
-	while(aux!=NULL){
-		if (!aux->seg.status)
-		{
-			if(aux->seg.length<6)
-				fragments++;
-		}
-		aux = aux->next;
-	}
-	return fragments;
 }
