@@ -12,15 +12,16 @@ void generate_processes(int n, long int * pids){//n é o número de processos
 
 int main(){
 	//Declaração de variáveis
-	ComponenteDeMemoria mem;
+	ComponenteDeMemoria mem_wf, mem_ff;
 	long int * pids;
 	
 
-	printf("=============First Fit==========\n");	
+	//printf("=============First Fit==========\n");	
 	printf("Memory length: 256\n");
-	init(&mem, 256);
-	//requistions_generator(10000, &mem);
-	
+	init(&mem_ff, 256);
+	init(&mem_wf, 256);
+	requistions_generator(10000, &mem_ff, &mem_wf);
+	//show(mem);
 	/*
 	//show(mem);
 	file_write(mem);
@@ -32,12 +33,11 @@ int main(){
 	printf("Memory length: 1024\n");
 	init(&mem, 1024);
 	requistions_generator(10000, &mem);
-	//show(mem);
+	show(mem);
 	file_write(mem);
 	*/
+file_write(mem_wf);
+file_write(mem_ff);
 
-	allocate_mem_ff(100, 4, &mem);
-	allocate_mem_ff(101, 5, &mem);
-	show(mem);
 	return 0;
 }

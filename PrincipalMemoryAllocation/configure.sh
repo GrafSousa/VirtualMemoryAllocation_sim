@@ -1,4 +1,5 @@
 #! /bin/bash
-gcc ComponenteDeMemoria.c ComponenteDeMemoria.h main.c ComponenteDeRequisicao.c ComponenteDeDesalocacao.c AlocacaoFF.c ComponenteDeEstatistica.c
-clear
-./a.out
+rm ArqGrav.txt
+gcc ComponenteDeMemoria.c ComponenteDeMemoria.h main.c ComponenteDeRequisicao.c ComponenteDeDesalocacao.c Allocation.c ComponenteDeEstatistica.c -o teste
+clear 
+./teste

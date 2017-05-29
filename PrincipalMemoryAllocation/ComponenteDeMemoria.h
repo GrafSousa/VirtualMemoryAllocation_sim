@@ -37,6 +37,6 @@ int allocate_mem_nf(int pid, int num_units, ComponenteDeMemoria * mem);
 int allocate_mem_bf(int pid, int num_units, ComponenteDeMemoria * mem);
 //int allocate_mem_wf(int pid, int num_units, ComponenteDeMemoria * mem);
 // ===================== Requisitons Methods ==================== //
-void requistions_generator(int num_req, ComponenteDeMemoria  *mem);
-int allocate_requisition(ComponenteDeMemoria  *mem);
-int deallocate_requisition(ComponenteDeMemoria  *mem);
+void requistions_generator(int num_req, ComponenteDeMemoria  *memff,ComponenteDeMemoria  *memwf);
+/*int allocate_requisition(ComponenteDeMemoria  *mem);
+int deallocate_requisition(ComponenteDeMemoria  *mem);*/

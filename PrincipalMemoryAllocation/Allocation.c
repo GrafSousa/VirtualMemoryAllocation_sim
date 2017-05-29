@@ -71,10 +71,13 @@ int allocate_mem_wf(int pid, int num_units, ComponenteDeMemoria * mem){
 
 	//Acha o primeiro segmento vazio
 	while(aux != NULL){
+			num_cell++;
 		if(!aux->seg.status){
+
 			maior = aux;
 			break;
 		}
+		//num_cell++;
 		aux = aux->next;
 	}
 	//Laço para achar a maior lacuna
@@ -82,6 +85,7 @@ int allocate_mem_wf(int pid, int num_units, ComponenteDeMemoria * mem){
 		if(aux->seg.length > maior->seg.length && !(aux->seg.status)){
 			maior = aux;
 		}
+		num_cell++;
 		aux = aux->next;
 	}
 

@@ -3,25 +3,37 @@
 #include <stdlib.h>
 #include <time.h>
 
-int allocate_requisition(ComponenteDeMemoria  *mem){
+/*int allocate_requisition(ComponenteDeMemoria  *mem, int option){
 	int pid,num_units, c;
 	pid = 1 + (rand()%300);
 	num_units= 3 + (rand()%10);
-	c = allocate_mem_ff(pid,num_units, &(*mem));
-	if(c == -1)
-		return -1;
-	else 
-		return c;
+	switch(option);
+	case 1:
+		c = allocate_mem_ff(pid,num_units, &(*mem));
+		if(c == -1)
+			return -1;
+		else 
+			return c;
+	case 2:
+		c = allocate_mem_wf(pid,num_units, &(*mem));
+		if(c == -1)
+			return -1;
+		else 
+			return c;
+
 }
 
 int deallocate_requisition(ComponenteDeMemoria  *mem){
 	int pid;
 	pid = 1 + (rand()%300);
 	deallocate_mem(pid,&(*mem));
-}
+}*/
 
-void requistions_generator(int num_req, ComponenteDeMemoria  *mem){ 
-	int i,x,allocation_attempt=0, error=0, sum =0, c ;
+void requistions_generator(int num_req, ComponenteDeMemoria  *memff,ComponenteDeMemoria  *memwf){ 
+	int i,x,allocation_attempt=0;
+	int pid, num_units;
+	int errorff=0, sumff =0, ff;
+	int errorwf=0, sumwf=0, wf;
 	struct timeval semente;
     /* Utilizar o tempo como semente para a funcao srand() */
     gettimeofday(&semente, NULL); 
@@ -29,23 +41,39 @@ void requistions_generator(int num_req, ComponenteDeMemoria  *mem){
   	for(i=0; i<num_req; i++){
 		x = (rand()%2);
 		if(x == 0){
+			pid = 1 + (rand()%300);
+			num_units= 3 + (rand()%10);
 			allocation_attempt++;
-			c = allocate_requisition(&(*mem));
-			if(c == -1)
-				error++;
+			ff = allocate_mem_ff(pid,num_units, &(*memff));
+			wf = allocate_mem_wf(pid,num_units, &(*memwf));
+			// Verificação First Fit
+			if(ff == -1)
+				errorff++;
 			else 
-				sum = sum + c;
+				sumff = sumff + ff;
+			// Verificação Worst Fit
+			if(wf == -1)
+				errorwf++;
+			else 
+				sumwf = sumwf + wf;
 		}
 
 		else{
-			deallocate_requisition(&(*mem));
+			pid = 1 + (rand()%300);
+			deallocate_mem(pid, &(*memff));
+			deallocate_mem(pid, &(*memwf));
+
 		
 		}
 
 	}
-	printf("Total de Erros: %d\n",error );
+	/*printf("Total de Erros: %d\n",error );
 	printf("Tentativas de Alocacao: %d\n", allocation_attempt );
-	printf("Total de celulas percorridas: %d\n", sum );
-	statistics(*mem, error, sum, allocation_attempt);
+	printf("Total de celulas percorridas: %d\n", sum );*/
+	printf("Tentativas de Alocacao: %d\n", allocation_attempt );
+	printf("=================First Fit====================\n");
+	statistics(*memff, errorff, sumff, allocation_attempt);
+	printf("=================Worst Fit====================\n");
+	statistics(*memwf, errorwf, sumwf, allocation_attempt);
 	
 }

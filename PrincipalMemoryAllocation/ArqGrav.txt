@@ -1,120 +1,36 @@
 ====================== Segment Information ======================
 Free
-Begin: 70
+Begin: 42
+length: 6
+Free
+Begin: 60
+length: 2
+Free
+Begin: 74
+length: 4
+Free
+Begin: 104
+length: 2
+Free
+Begin: 172
+length: 2
+Memory available: 16kB
+Fragmentos de memoria inutilizaveis: 4
+====================== Segment Information ======================
+Free
+Begin: 42
+length: 2
+Free
+Begin: 56
 length: 2
 Free
 Begin: 100
 length: 2
 Free
 Begin: 136
-length: 2
+length: 6
 Free
-Begin: 162
+Begin: 254
 length: 2
-Free
-Begin: 182
-length: 2
-Free
-Begin: 214
-length: 4
 Memory available: 14kB
-Fragmentos de memoria inutilizaveis: 6
-====================== Segment Information ======================
-Free
-Begin: 206
-length: 4
-Free
-Begin: 232
-length: 4
-Free
-Begin: 278
-length: 2
-Free
-Begin: 316
-length: 2
-Free
-Begin: 358
-length: 4
-Free
-Begin: 370
-length: 2
-Free
-Begin: 396
-length: 4
-Free
-Begin: 430
-length: 4
-Free
-Begin: 450
-length: 6
-Free
-Begin: 474
-length: 4
-Free
-Begin: 494
-length: 6
-Memory available: 42kB
-Fragmentos de memoria inutilizaveis: 9
-====================== Segment Information ======================
-Free
-Begin: 28
-length: 4
-Free
-Begin: 84
-length: 2
-Free
-Begin: 172
-length: 2
-Free
-Begin: 238
-length: 2
-Free
-Begin: 246
-length: 6
-Free
-Begin: 298
-length: 8
-Free
-Begin: 328
-length: 4
-Free
-Begin: 452
-length: 2
-Free
-Begin: 526
-length: 2
-Free
-Begin: 588
-length: 6
-Free
-Begin: 642
-length: 10
-Free
-Begin: 658
-length: 8
-Free
-Begin: 702
-length: 2
-Free
-Begin: 752
-length: 4
-Free
-Begin: 830
-length: 2
-Free
-Begin: 850
-length: 2
-Free
-Begin: 898
-length: 2
-Free
-Begin: 928
-length: 4
-Free
-Begin: 950
-length: 6
-Free
-Begin: 1000
-length: 2
-Memory available: 80kB
-Fragmentos de memoria inutilizaveis: 14
+Fragmentos de memoria inutilizaveis: 4
