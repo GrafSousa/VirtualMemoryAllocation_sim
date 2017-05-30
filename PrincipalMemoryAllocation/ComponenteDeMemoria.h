@@ -17,7 +17,7 @@ typedef struct MemCell {
 
 typedef struct ComponenteDeMemoria {
 	int free;
-	CellPointer first, last;
+	CellPointer first, last, search;
 } ComponenteDeMemoria;
 
 // =========================== Methods =========================== //
@@ -35,7 +35,7 @@ int fragment_count_ff(ComponenteDeMemoria mem);
 int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem);
 int allocate_mem_nf(int pid, int num_units, ComponenteDeMemoria * mem);
 int allocate_mem_bf(int pid, int num_units, ComponenteDeMemoria * mem);
-//int allocate_mem_wf(int pid, int num_units, ComponenteDeMemoria * mem);
+int allocate_mem_wf(int pid, int num_units, ComponenteDeMemoria * mem);
 // ===================== Requisitons Methods ==================== //
 void requistions_generator(int num_req, ComponenteDeMemoria  *memff,ComponenteDeMemoria  *memwf);
 /*int allocate_requisition(ComponenteDeMemoria  *mem);

@@ -34,3 +34,27 @@ Begin: 254
 length: 2
 Memory available: 14kB
 Fragmentos de memoria inutilizaveis: 4
+====================== Segment Information ======================
+Free
+Begin: 0
+length: 256
+Memory available: 256kB
+Fragmentos de memoria inutilizaveis: 0
+====================== Segment Information ======================
+Free
+Begin: 0
+length: 256
+Memory available: 256kB
+Fragmentos de memoria inutilizaveis: 0
+====================== Segment Information ======================
+Free
+Begin: 0
+length: 256
+Memory available: 256kB
+Fragmentos de memoria inutilizaveis: 0
+====================== Segment Information ======================
+Free
+Begin: 0
+length: 256
+Memory available: 256kB
+Fragmentos de memoria inutilizaveis: 0
