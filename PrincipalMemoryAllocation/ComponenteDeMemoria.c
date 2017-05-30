@@ -28,6 +28,7 @@ void init(ComponenteDeMemoria * mem, int length){
 	mem->first->next->next = NULL;
 	
 	mem->last = mem->first->next;
+	mem->size = 1;
 	mem->search = mem->last;
 }
 

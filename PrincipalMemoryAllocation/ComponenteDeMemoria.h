@@ -17,6 +17,7 @@ typedef struct MemCell {
 
 typedef struct ComponenteDeMemoria {
 	int free;
+	int size;
 	CellPointer first, last, search;
 } ComponenteDeMemoria;
 

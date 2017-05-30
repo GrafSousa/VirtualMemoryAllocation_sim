@@ -14,6 +14,7 @@ int deallocate_mem(int pid, ComponenteDeMemoria * mem){
 			
 			//Atualiza total disponível
 			mem->free = mem->free + aux->seg.length;
+			mem->size = mem->size - 1;
 
 			//Mescla células livres
 			merge_free_cells(mem);

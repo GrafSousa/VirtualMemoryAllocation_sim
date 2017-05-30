@@ -26,6 +26,7 @@ int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem){
 				aux->seg = s;
 				mem->free = mem->free - num_units*2;
 				addr = addr + num_units*2;
+				mem->size = mem->size + 1;
 				return num_cell;
 			}
 			else if(num_units*2 < aux->seg.length){//Memória alocada é menor que o tamanho do segmento
@@ -52,6 +53,7 @@ int allocate_mem_ff(int pid, int num_units, ComponenteDeMemoria * mem){
 				
 				//Atualiza total de de memória livre
 				mem->free = mem->free - num_units*2;
+				mem->size = mem->size + 1;
 				return num_cell;
 			}
 		}
@@ -106,6 +108,7 @@ int allocate_mem_wf(int pid, int num_units, ComponenteDeMemoria * mem){
 			maior->seg = s;
 			mem->free = mem->free - num_units*2;
 			addr = addr + num_units*2;
+			mem->size = mem->size + 1;
 			return num_cell;
 		}
 		else if(num_units*2 < maior->seg.length){//Memória alocada é menor que o tamanho do segmento
@@ -134,6 +137,7 @@ int allocate_mem_wf(int pid, int num_units, ComponenteDeMemoria * mem){
 				
 			//Atualiza total de de memória livre
 			mem->free = mem->free - num_units*2;
+			mem->size = mem->size + 1;
 			return num_cell;
 		}
 
@@ -185,6 +189,7 @@ int allocate_mem_bf(int pid, int num_units, ComponenteDeMemoria * mem){
 			menor->seg = s;
 			mem->free = mem->free - num_units*2;
 			addr = addr + num_units*2;
+			mem->size = mem->size + 1;
 			return num_cell;
 		}
 		else if(num_units*2 < menor->seg.length){//Memória alocada é menor que o tamanho do segmento
@@ -213,6 +218,7 @@ int allocate_mem_bf(int pid, int num_units, ComponenteDeMemoria * mem){
 				
 			//Atualiza total de de memória livre
 			mem->free = mem->free - num_units*2;
+			mem->size = mem->size + 1;
 			return num_cell;
 		}
 
@@ -225,10 +231,10 @@ int allocate_mem_bf(int pid, int num_units, ComponenteDeMemoria * mem){
 
 int allocate_mem_nf(int pid, int num_units, ComponenteDeMemoria * mem){
 	CellPointer aux, new;
-	int addr, num_cell = 0;
+	int addr, tam, num_cell = 0;
 	aux = mem->search;
-
-	while(aux != NULL){
+	tam  = 1;
+	while(tam <= mem->size){
 		num_cell++;
 		if(!aux->seg.status){//Verifica se o segmento está livre
 			
@@ -247,6 +253,7 @@ int allocate_mem_nf(int pid, int num_units, ComponenteDeMemoria * mem){
 				//Atualiza dados do segmento, total de memória livre e endereço para próximo segmento
 				aux->seg = s;
 				mem->free = mem->free - num_units*2;
+				mem->size = mem->size + 1;
 				addr = addr + num_units*2;
 				return num_cell;
 			}
@@ -275,12 +282,19 @@ int allocate_mem_nf(int pid, int num_units, ComponenteDeMemoria * mem){
 				mem->search = new;
 				//Atualiza total de de memória livre
 				mem->free = mem->free - num_units*2;
+				mem->size = mem->size + 1;
 				return num_cell;
 			}
 		}
 		aux = aux->next;
+		tam++;
+		if(aux == NULL){
+			mem->search = mem->first->next;
+			aux = mem->search;
+		}
 	}
-	if (aux == NULL)
+
+	if (tam > mem->size)
 	{
 		return -1;
 	}
