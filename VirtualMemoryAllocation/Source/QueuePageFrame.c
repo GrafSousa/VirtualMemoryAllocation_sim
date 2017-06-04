@@ -74,21 +74,30 @@ void searchBitR( PageFrame *pageFrame, int page ){
 
 	PageFrame aux;
 	aux.primeiroPage = pageFrame->primeiroPage;
+
+	
 	
 	
 	while( pageFrame -> primeiroPage -> prox!= NULL ){
 		
-		if( pageFrame -> primeiroPage-> bitR == 0 ){
-			
+
+		if( pageFrame -> primeiroPage -> prox-> bitR == 0 ){
+
 			retiraPage( &aux );			
 			inserePage( page, pageFrame );
+			//printf("\n");
+			//imprimePage( aux );
+			//printf("\n");
 			break;
 		}
-		if( pageFrame -> primeiroPage -> bitR == 1){
-			pageFrame -> primeiroPage -> bitR = 0;
 
+		if( pageFrame -> primeiroPage -> prox -> bitR == 1){
+			pageFrame -> primeiroPage -> prox -> bitR = 0;
+
+			//printf("AUX PAGINA = %d  AUX BIT R = %d\n", aux.primeiroPage -> prox -> numPage, aux.primeiroPage -> prox -> bitR);
 			retiraPage(&aux);
-			inserePage( pageFrame -> primeiroPage -> numPage, pageFrame );
+			inserePage( pageFrame -> primeiroPage -> prox -> numPage, pageFrame );
+
 
 			
 		}
@@ -129,6 +138,7 @@ void setBitR( PageFrame *pageFrame, int page ){
 
 	ApontadorPage aux;
 	aux = pageFrame->primeiroPage->prox;
+
 
 	while( aux != NULL ){
 
