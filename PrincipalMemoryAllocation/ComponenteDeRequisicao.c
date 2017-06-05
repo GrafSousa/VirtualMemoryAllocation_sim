@@ -86,5 +86,6 @@ void requistions_generator(int num_req, int size){
 	statistics(mem_bf, errorbf, sumbf, allocation_attempt);
 	printf("\n");
 	printf("-----------------------------------------------------------------\n");
+	
 
 }
